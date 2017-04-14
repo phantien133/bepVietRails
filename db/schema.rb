@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20170410043652) do
   create_table "condition_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "condition_id", null: false
     t.string   "value"
-    t.boolean  "is_match"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["condition_id", "value"], name: "index_condition_details_on_condition_id_and_value", unique: true, using: :btree
     t.index ["condition_id"], name: "index_condition_details_on_condition_id", using: :btree
   end
 
@@ -118,11 +118,13 @@ ActiveRecord::Schema.define(version: 20170410043652) do
   end
 
   create_table "target_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "target_id",           null: false
-    t.integer  "condition_detail_id", null: false
-    t.string   "name",                null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "target_id",                          null: false
+    t.integer  "condition_detail_id",                null: false
+    t.boolean  "is_match",            default: true
+    t.string   "type"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["condition_detail_id", "target_id", "type"], name: "add_indexarget_condition_handle", unique: true, using: :btree
     t.index ["condition_detail_id"], name: "index_target_conditions_on_condition_detail_id", using: :btree
   end
 
