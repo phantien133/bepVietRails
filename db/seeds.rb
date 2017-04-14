@@ -1,6 +1,14 @@
 puts "---------------------"
 puts "Create base Category"
-Category.create! name: "BASE CATEGORY", left: 1, right: 2
+c = Category.create! name: "BASE CATEGORY", left: 1, right: 2
+  5.times do |n|
+    s = Category.add! Faker::Name.name, c.right
+      5.times do
+        Category.add! Faker::Name.name, s.right
+        s.reload
+      end
+    c.reload
+  end
 
 puts "---------------------"
 puts "Create Condition"

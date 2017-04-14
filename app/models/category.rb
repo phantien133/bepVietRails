@@ -20,6 +20,14 @@ class Category < ApplicationRecord
       end
       return {type: :danger, messages: I18n.t(:worng)}
     end
+
+    def add! name, parent_right
+      ActiveRecord::Base.transaction do
+        Category.unscoped.where("`categories`.`right` >= ?", parent_right).update_all "`categories`.`right` = `categories`.`right` + 2"
+        Category.unscoped.where("`categories`.`left` > ?", parent_right).update_all "`categories`.`left` = `categories`.`left` + 2"
+        category = Category.create! name: name, left: parent_right,right: parent_right + 1
+      end
+    end
   end
 
   def children

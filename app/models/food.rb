@@ -1,4 +1,6 @@
 class Food < ApplicationRecord
+  belongs_to :category
+
   has_many :food_conditions, foreign_key: :target_id, class_name: Condition::FoodCondition.name
   has_many :condition_details, through: :food_conditions
   has_many :conditions, through: :condition_details
