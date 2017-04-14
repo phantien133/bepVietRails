@@ -4,8 +4,8 @@ class Admin::CategoriesController < Admin::AdminController
   def index
     @categories = Category.all
     @ends = []
-    # @json = to_node_structure Category.unscoped.first
-    @json = to_node_food C45.new.root
+    @json = to_node_structure Category.unscoped.first
+    @json1 = to_node_food C45.new.root
   end
 
   def create
@@ -52,7 +52,8 @@ class Admin::CategoriesController < Admin::AdminController
     children = node.children
     text = {
       name: node.name,
-      title: "foods: #{node.foods.count}  |  Match: #{node.is_match}"
+      title: "foods: #{node.foods.count}",
+      desc: "Match: #{node.is_match}"
     }
     text[:desc] = "Gain Ratio: #{node.value}" if node.value != 0
     json = {text: text}
