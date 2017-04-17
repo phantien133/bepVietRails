@@ -6,14 +6,13 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title><%= yield :title %></title>
-  <%= stylesheet_link_tag "application", media: "all",
-  "data-turbolinks-track": true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag 'application' %>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" media="all" href="/assets/material-dashboard.css" data-turbolinks-track="reload" />
+  <!-- <link rel="stylesheet" media="all" href="/assets/material-dashboard.css" data-turbolinks-track="reload" /> -->
   <%= csrf_meta_tags %>
 </head>
 
