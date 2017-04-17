@@ -16,7 +16,7 @@
  *= require material-dashboard
  *= require Treant
  *= require perfect-scrollbar
-
+ *= require material-icons
  */
 @import "bootstrap-sprockets"
 @import "bootstrap"
