@@ -18,10 +18,10 @@ class Comment < ApplicationRecord
     if target.is_a? Post
       users = self.target.commentors
       users.each do |u|
-        UserNotifierMailer.send_email_notifier_comment(u, self.target).deliver_later unless u == self.user
+        UserNotifierMailer.send_email_notifier_comment(u, self.target).deliver_now unless u == self.user
       end
       if self.target.is_a?(Post::UserPost) && !users.include?(self.user)
-        UserNotifierMailer.send_email_notifier_comment(self.user, self.target).deliver_later
+        UserNotifierMailer.send_email_notifier_comment(self.user, self.target).deliver_now
       end
     end
   end

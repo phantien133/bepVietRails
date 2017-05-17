@@ -14,7 +14,7 @@ class SessionsController < Devise::SessionsController
 
   def failure
     warden.custom_failure!
-    render json: { success: false, errors: ["Invalid username or password!"] }
+    render json: { success: false, errors: [ t(:user_invalid)] }
   end
 
   def after_sign_in_path_for(resource_or_scope)

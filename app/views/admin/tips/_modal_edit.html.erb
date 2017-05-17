@@ -29,7 +29,7 @@
                 <%= f.label :target_id, t(".category"), class: "control-label" %>
                 <%= f.select :target_id, options_for_select(Category.all.map{|c| [c.name, c.id]}, @post.target_id), {include_blank: true}, {class: "form-control"} %>
               </div>
-              <div class="form-group label-floating is-empty autocomplete input col-md-4">
+              <div class="form-group label-floating is-empty autocomplete input col-md-6">
                 <%= label_tag t(:tag), nil, class: "control-label" %>
                 <%= text_field_tag "hashtag",  nil, class: "form-control suggestion", onkeyup: "searchHashtag(this, event);", autocomplete: :off %>
                 <span style="display:none;" class="suggestion-name-sub">post</span>

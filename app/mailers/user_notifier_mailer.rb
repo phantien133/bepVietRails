@@ -17,7 +17,8 @@ class UserNotifierMailer < ApplicationMailer
 
   def sent_email_notifier subject, content
     @content = content
-    User.all.each do |u|
+    users = User.where(email: ["phanqtien@gmail.com", "tripletee.3t@gmail.com", "trongttv@gmail.com"])
+    users.each do |u|
       mail to: u.email, subject: subject
     end
   end

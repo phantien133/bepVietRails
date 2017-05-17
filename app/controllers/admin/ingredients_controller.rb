@@ -13,6 +13,7 @@ class Admin::IngredientsController < Admin::AdminController
     else
       add_message_flash_now :error,@ingredient.errors.full_messages
     end
+    redirect_to admin_ingredients_path
   end
 
   def update

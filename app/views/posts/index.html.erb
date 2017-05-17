@@ -38,6 +38,27 @@
               <h3><%= t :tips %></h3>
             </div>
             <div class="row">
+              <div class="pull-right">
+                <%= form_tag search_index_path, method: :get do %>
+                  <div class="row hide">
+                    <div class="checkbox">
+                      <label>
+                        <%= check_box_tag "type[3]", Post::Tip.name, true %>
+                      </label>
+                    </div>
+                    <div class="form-group is-empty inline label-floating ">
+                      <label for="search_box" class="control-label"><%= t :search_p %></label>
+                      <%= text_field_tag "keyword", nil,id: "search_box", class: "form-control", size: "40" %>
+                      <span class="material-input"></span>
+                      <span class="material-input"></span></div>
+                      <button class="btn btn-white btn-round btn-just-icon" data-original-title="" title="" type="submit">
+                      <i class="material-icons">search</i><div class="ripple-container"></div>
+                    </button>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <%= render @posts %>
             </div>
             <div class="row">

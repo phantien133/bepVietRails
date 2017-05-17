@@ -26,7 +26,7 @@
 //= require Treant
 //= require raphael
 //= require login-register
-//= require jquery-confirm
 //= require jquery.raty
 //= require ratyrate
 //= require jssor.slider-23.1.5.min
+//= require jquery-confirm

@@ -1,0 +1,53 @@
+<div class="modal fade in" id="modal-add-post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= form_for @tip, url: {controller: "admin/tips", action: :create},
+        authenticity_token: true, html: {multipart: true}, remote: true do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="material-icons">clear</i>
+          </button>
+          <h4 class="modal-title">Add post</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group label-floating is-empty">
+            <%= f.label :title,t(".title"), class: "control-label" %>
+            <%= f.text_field :title, class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <div class="file-field input-field">
+              <div class="btn btn-primary">
+                <span><%= t ".image" %></span>
+                <%= f.file_field :image, accept: Settings.accepted_files, required: true %>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate form-control" type="text" disabled="disabled">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-xs-12 input label-floating">
+              <%= f.label :target_id, t(".category"), class: "control-label" %>
+              <%= f.select :target_id, Category.leafs.collect { |c| [c.name, c.id] },
+                {include_blank: true}, {class: "form-control"} %>
+            </div>
+            <div class="form-group label-floating is-empty autocomplete input col-md-6 col-xs-12">
+              <%= label_tag t(:tag), nil, class: "control-label" %>
+              <%= text_field_tag "hashtag",  nil, class: "form-control suggestion", onkeyup: "searchHashtag(this, event);" %>
+              <span style="display:none;" class="suggestion-name-sub">post</span>
+              <span style="display:none;" class="suggestion-name">post[post_hashtags_attributes]</span>
+              <ul class="autocomplete-suggestion"></ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label t(".content"), nil, class: "control-label" %>
+            <%= f.cktext_area :content, rows: 40, id: "post-content-edit" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit t(".add"), class: "btn btn-primary btn-simple" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

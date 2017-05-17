@@ -41,7 +41,7 @@ class Food < ApplicationRecord
     SQL
     select("foods.*, AVG(rates.stars) AS avg_rate")
       .joins(join_sql)
-      .order("avg_rate DESC")
+      .order("avg_rate DESC NULLS LAST")
       .group("foods.id").first(total)
   end
 
