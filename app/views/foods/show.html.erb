@@ -154,8 +154,15 @@
       <%= @food.cooking_method.html_safe %>
     </div>
     <div class="row">
-      <%= render partial: "shared/hashtag", collection: @food.hashtags,
-        as: :hashtag %>
+      <div class="col-md-6 col-xs-12">
+        <%= render partial: "shared/hashtag", collection: @food.hashtags,
+          as: :hashtag %>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="share-button">
+          <%= social_share_button_tag @food.name %>
+        </div>
+      </div>
     </div>
     <div class="comments row">
       <div class="headline">

@@ -249,6 +249,8 @@ GEM
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
     slop (3.6.0)
+    social-share-button (0.10.0)
+      coffee-rails
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -325,6 +327,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sidekiq
   sinatra
+  social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
   twitter

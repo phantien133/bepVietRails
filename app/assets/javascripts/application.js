@@ -30,3 +30,4 @@
 //= require jquery.raty
 //= require ratyrate
 //= require jssor.slider-23.1.5.min
+//= require social-share-button

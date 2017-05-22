@@ -19,8 +19,15 @@
           <%= @post.content.html_safe %>
         </div>
         <div class="row">
-          <%= render partial: "shared/hashtag", collection: @post.hashtags,
-            as: :hashtag %>
+          <div class="col-md-6 col-xs-12">
+            <%= render partial: "shared/hashtag", collection: @post.hashtags,
+              as: :hashtag %>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="share-button">
+              <%= social_share_button_tag @post.title %>
+            </div>
+          </div>
         </div>
         <div class="row">
           <% if @post.class == Post::UserPost %>
